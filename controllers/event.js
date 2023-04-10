@@ -45,6 +45,6 @@ exports.postEventData = asyncHandler(async (req, res) => {
         phoneNum: event.phoneNum,
       });
     } else {
-      res.status(400).json({ success: false, err: 'Invalid' });
+      res.status(400).json({ success: false, error: 'Invalid' });
     }
   });
