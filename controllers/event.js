@@ -16,12 +16,16 @@ exports.postEventData = asyncHandler(async (req, res) => {
     const { name, email, request, phoneNum } = req.body;
   
     //Throw error if user details is not filled
-    // if (!phoneNum || !name || !email || !request) {
-    //   res.status(400).json({success: 'false', error: 'Please Fill in all Fields'});
-    // }
+    if (!phoneNum || !name || !email || !request) {
+      res.status(400).json({success: 'false', error: 'Please Fill in all Fields'});
+    }
   
     //Check if user already exists
     const checkUser = await Event.findOne({ email });
+
+    if(err) {
+      return res.status(500).json({ success: false, error: 'Something went wrong' })
+    }
   
     //Throw error if user already exists
     if (checkUser) {
@@ -45,6 +49,6 @@ exports.postEventData = asyncHandler(async (req, res) => {
         phoneNum: event.phoneNum,
       });
     } else {
-      res.status(400).json({ success: false, error: 'Invalid' });
+      res.status(400).json({ success: false, error: err });
     }
   });
