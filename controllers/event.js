@@ -13,10 +13,10 @@ exports.getEventData = (req, res) => {
 
 exports.postEventData = asyncHandler(async (req, res) => {
     //Get details from request
-  const { FullName, email, request, phoneNum } = req.body;
+  const { fullName, email, request, phoneNum } = req.body;
 
   //Throw error if user details is not filled
-  if (!phoneNum || !FullName || !email || !request) {
+  if (!phoneNum || !fullName || !email || !request) {
     res.status(400).json({success: 'false', error: 'Please Fill in all Fields'});
   }
 
