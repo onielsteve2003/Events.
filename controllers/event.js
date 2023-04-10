@@ -16,9 +16,9 @@ exports.postEventData = asyncHandler(async (req, res) => {
     const { name, email, request, phoneNum } = req.body;
   
     //Throw error if user details is not filled
-    if (!phoneNum || !name || !email || !request) {
-      res.status(400).json({success: 'false', error: 'Please Fill in all Fields'});
-    }
+    // if (!phoneNum || !name || !email || !request) {
+    //   res.status(400).json({success: 'false', error: 'Please Fill in all Fields'});
+    // }
   
     //Check if user already exists
     const checkUser = await Event.findOne({ email });
