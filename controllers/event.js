@@ -17,7 +17,7 @@ exports.postEventData = asyncHandler(async (req, res) => {
 
   //Throw error if user details is not filled
   if (!phoneNum || !name || !email || !request) {
-    res.status(400).json({success: 'false', error: 'Please Fill in all Fields'});
+   return res.status(400).json({success: 'false', error: 'Please Fill in all Fields'});
   }
 
   //Check if user already exists
@@ -25,7 +25,7 @@ exports.postEventData = asyncHandler(async (req, res) => {
 
   //Throw error if user already exists
   if (checkUser) {
-    res.status(400).json({ success: false, error: 'Seat reserved with this email already' });
+    return res.status(400).json({ success: false, error: 'Seat reserved with this email already' });
   }
 
   //Create or Register new User
